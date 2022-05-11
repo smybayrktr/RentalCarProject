@@ -12,9 +12,14 @@ namespace ConsoleUI
             //InMemoryGetAllTest();
             //GetAllTest();
             //ColorManagerTest();
+            //GetCarDetailsTest();
+        }
+
+        private static void GetCarDetailsTest()
+        {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            foreach (var car in carManager.GetCarDetails())
+            foreach (var car in carManager.GetCarDetails().Data)
             {
                 Console.WriteLine(car.CarName + " " + car.BrandName + " " + car.ColorName + " " + car.DailyPrice);
             }
@@ -23,7 +28,7 @@ namespace ConsoleUI
         private static void ColorManagerTest()
         {
             ColorManager colorManager = new ColorManager(new EfColorDal());
-            foreach (var color in colorManager.GetAll())
+            foreach (var color in colorManager.GetAll().Data)
             {
                 Console.WriteLine(color.Name);
             }
@@ -32,7 +37,7 @@ namespace ConsoleUI
         private static void GetAllTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
                 Console.WriteLine(car.Name);
             }
@@ -41,7 +46,7 @@ namespace ConsoleUI
         private static void InMemoryGetAllTest()
         {
             CarManager carManager = new CarManager(new InMemoryCarDal());
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
                 Console.WriteLine(car.Id);
             }
